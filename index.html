@@ -12,8 +12,8 @@
   <meta property="og:url" content="https://yourdomain.com/redirect.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Non-JS fallback -->
-  <meta http-equiv="refresh" content="0;url=https://youtu.be/tKKiNV9x_xE?si=aXKbgu8ecMIH309I" />
+  <!-- Non-JS fallback for any browser -->
+  <meta http-equiv="refresh" content="0;url=https://youtu.be/tKKiNV9x_xE?si=yY_yf8L-KMyziikf" />
 
   <style>
     body {
@@ -51,31 +51,21 @@
 
   <script>
     window.onload = function () {
-      const webUrl    = "https://youtu.be/tKKiNV9x_xE?si=aXKbgu8ecMIH309I";
+      const webUrl    = "https://youtu.be/tKKiNV9x_xE?si=yY_yf8L-KMyziikf";
       const appUrl    = "vnd.youtube://tKKiNV9x_xE";
       const intentUrl = "intent://youtu.be/tKKiNV9x_xE#Intent;package=com.google.android.youtube;scheme=https;end";
 
       const ua = navigator.userAgent;
-
-      if (/Instagram/i.test(ua)) {
-        window.location.href = webUrl;
-        return;
-      }
-
       if (/Android/i.test(ua)) {
         window.location.href = intentUrl;
-        return;
-      }
-
-      if (/iPhone|iPad|iPod/i.test(ua)) {
+      } else if (/iPhone|iPad|iPod/i.test(ua)) {
         window.location.href = appUrl;
         setTimeout(() => {
           window.location.href = webUrl;
         }, 2500);
-        return;
+      } else {
+        window.location.href = webUrl;
       }
-
-      window.location.href = webUrl;
     };
   </script>
 </head>
@@ -83,7 +73,8 @@
   <div class="loader"></div>
   <div class="message">
     <p>Opening YouTube…</p>
-    <p>If it doesn’t open, <a href="https://youtu.be/tKKiNV9x_xE?si=aXKbgu8ecMIH309I">click here</a>.</p>
+    <p>If it doesn’t open, <a href="https://youtu.be/tKKiNV9x_xE?si=yY_yf8L-KMyziikf">click here</a>.</p>
   </div>
 </body>
 </html>
+
